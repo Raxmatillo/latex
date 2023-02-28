@@ -1,0 +1,558 @@
+\documentclass[10 pt]{book}
+\usepackage[russian]{babel}
+\usepackage[T1]{fontenc}
+\usepackage{pifont,setspace,hyperref,amsthm,amsmath,amssymb,color,multirow,graphicx,subfigure, color, longtable, makecell }
+\usepackage{enumitem}
+\usepackage{inputenc}
+\usepackage{amsmath,latexsym,amsthm, mathrsfs}
+\usepackage{graphicx}
+\usepackage{amssymb}
+\def\abd{\mathop{\ulcorner\!\urcorner}}
+\setcounter{page}{1}
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Please, do not change commands and do not use own macroses!
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+\textwidth 170mm \textheight 240mm
+\topmargin -9mm
+\oddsidemargin -5mm
+\evensidemargin -5mm
+\begin{document}
+	\begin{flushright}
+		$
+		\begin{array}{l}
+			\includegraphics[width=0.4\linewidth, height=0.2\textheight]{bim}
+		\end{array}
+		$
+		\begin{tabular}{l}
+			{\sf Matematika Instituti Byulleteni}\\
+			{\sf  2022, Vol. 5, \No 6, \pageref{firstpage}-\pageref{lastpage} b.}\\
+			\\
+			{\sf Bulletin of the Institute of Mathematics}\\
+			{\sf  2022, Vol. 5, \No 6, pp.\pageref{firstpage}-\pageref{lastpage}}\\
+			\\
+			{\sf Áþëëåòåíü Èíñòèòóòà ìàòåìàòèêè}\\
+			{\sf  2022, Vol. 5, \No 6, ñòp.\pageref{firstpage}-\pageref{lastpage}}\\
+		\end{tabular}
+	\end{flushright}
+
+	\sloppy
+
+
+\begin{center}
+\textbf{\Large \textsc {Differential games with  h-constraints on the controls}}\\[0.2 cm]
+\textbf{Akbarov A.~Kh.~\footnote{Andijan State University, Andijan, Uzbekistan. E-mail: akbarov.adhambek@bk.ru}}
+\end{center}
+
+%Below title, abstract and Keywords of the article will be given. First in Uzbek with Latine letters (in case, if you do not know Uzbek, editors will do it for you). Next, the same information should be given in Russian (in case, if you do not know Uzbek, editors will do it for you).
+%
+%
+{\small
+\begin{center}
+\begin{tabular}{p{9cm}}
+\textcolor{blue}{Boshqaruvlarga H-chegaralanishlar qo`yilgan hol uchun differensial o`yinlar}\\
+Ushbu maqolada boshqaruvlarning kattaligi  giperbolik funksiyalar ko`rinishidagi  chegaralanishlarda keltiriladigan sodda harakatli
+ quvish va qochish masalalari  o`rganiladi. Quvish masalasini yechish uchun  parallel yaqinlashish strategiyasi
+  (qisqacha, $\Pi$-strategiya) taklif etiladi va uning yordamida  tutishni kafolatlovchi yetarli shartlar aniqlanadi. Bunda qochuvchining yetishish
+   sohasi va uning muhim hossalari keltiriladi.  Qochish masalasini yechish uchun esa qochish    shartlari  aniqlanadi.\\
+\noindent \underline{Kalit so'zlar:} Differensial o`yin; quvish; qochish; Gronuoll tengsizligi; quvlovchi; qochuvchi; strategiya; yetishish sohasi.\\
+[0.5 cm]
+\textcolor{blue}{Äèôôåðåíöèàëüíûå èãðû ñ H-îãðàíè÷åíèÿìè íà óïðàâëåíèÿ}\\
+Â íàñòîÿùåé ñòàòüå ðàññìàòðèâàþòñÿ çàäà÷è ïðåñëåäîâàíèÿ è óáåãàíèÿ ïðè ïðîñòûõ äâèæåíèÿõ èãðîêîâ, êîãäà íà  âåëè÷èíû óïðàâëåíèÿ èãðîêîâ íàëàãàþòñÿ
+îãðàíè÷åíèÿ   ïðèâîäÿùèå  ê  íåêîòîðûì âèäàì ãèïåðáîëè÷åñêèõ  ôóíêöèé. Äëÿ ðåøåíèÿ çàäà÷è ïðåñëåäîâàíèÿ ïðåäëàãàåòñÿ ñòðàòåãèÿ ïàðàëëåëüíîãî
+ ñáëèæåíèÿ èãðîêîâ (êîðî÷å, $\Pi$-ñòðàòåãèÿ) è ïðè ïîìîùè åå íàõîäèòñÿ óñëîâèÿ çàâåðøåíèÿ èãðû. Çäåñü  îïðåäåëÿåòñÿ  îáëàñòü  äîñòèæèìîñòè óáåãàþùåãî è ïðèâîäÿòñÿ
+  âàæíûå åãî ñâîéñòâà. Äëÿ ðåøåíèÿ çàäà÷è óáåãàíèÿ íàéäåíû  óñëîâèÿ çàâåðøåíèÿ èãðû  â ïîëüçó óáåãàþùåãî.\\
+
+\noindent \underline{Êëþ÷åâûå ñëîâà:} Äèôôåðåöèàëüíàÿ èãðà; ïðåñëåäîâàíèÿ; óáåãàíèÿ; íåðàâåíñòâî Ãðîíóîëëà; ïðåñëåäîâàòåëü; óáåãàþùèé;
+ ñòðàòåãèÿ; îáëàñòü äîñòèæèìîñòè.
+\end{tabular}\end{center} }
+\vspace{0.5 cm}
+
+\noindent \textbf{MSC 2010: } 49N79, 49N70, 91A24
+\\
+\noindent \textbf{Keywords:} Differential game, pursuit, evasion, Gr\"{o}nwall's inequality, pursuer, evader, strategy, attainability domain.
+
+
+
+\makeatletter
+\renewcommand{\@oddhead}{\vbox{\hfill
+{\it Akbarov A.~Kh.~ Differential games with H-constraints on the controls... }\hfill \thepage \hrule}}
+\renewcommand{\@evenhead}{\vbox{\hfill
+{ Bulletin of the Institute of Mathematics, 2022, Vol. 5, \No 6, ISSN-2181-9483}\hfill \thepage \hrule}}
+
+\makeatother
+% Label for the first page
+%
+\label{firstpage}
+
+
+\section*{Introduction}
+In the Theory of Differential Games, on the basis of the fundamental attitudes evolved by L.S.Pontryagin \cite{1} and
+N.N.Krasovskii \cite{2}, the differential game is viewed as an optimal control problem from the standpoint of either
+a pursuer or an evader. The book ''Differential games'' \cite{3} by American mathematician R.Isaacs consist of particular game examples in which were studied thoroughly and dedicated for new research. L.A.Petrosyan investigated comprehensively some of the game problems which were provided in \cite{3}, and he specified his results in \cite{4}. L.A.Petrosyan introduced the term of parallel convergence strategy (in short, $\Pi$-strategy) and used it in order to solve the quality problems of differential game. Later on, the $\Pi$-strategy brought about the development of the way of pursuit in differential games of several pursuers
+(see e.g. Pshenichnyi \cite{5}, Azamov \cite{6}, Azamov and Samatov \cite{7}, Blagodatskikh and Petrov \cite{8}, Chikrii \cite{9}, Grigorenko \cite{10}, Petrosyan and Rikhsiev \cite{11}, Petrosyan and Mazalov \cite{12}, Samatov \cite{13}-\cite{16}).
+
+In the problems of differential games, on control functions, geometric, integral or mixed constraints are mainly imposed (Dar'in and Kurzhanskii \cite{17}, Kornev and Lukoyanov \cite{18}, Satimov \cite{19}, Ibragimov \cite{20,21}). In the works \cite{13,16}, the concept of linear constraint, which represents both geometric and integral constraints, was first presented and similar options of the $\Pi$-strategy were recommended in order for solving the pursuit problem. However, constraints in the form of integral type inequalities, which are imposed on controls, have been bringing about a considerable signification in numerous practical problems, including economical, ecological and technical problems (Aubin and Cellina \cite{22}, Pang and Stewart \cite{23}). In the work \cite{24}, for the first time, the constraint of Gr\"{o}nwall type (shortly, $Gr$-constraint) on controls was introduced, and in a certain sense, this kind of constraint describes generalization of geometric constraint. The notion of $Gr$-constraint is arisen by the usage of Gr\"{o}nwall's integral inequality on control functions (Gr\"{o}nwall \cite{25}).
+
+In this paper, we study the pursuit-evasion problems in a simple motion differential game under $H$-constraints on the controls players. So as to solve the pursuit problem, we suggest the $\Pi$-strategy, which provides parallel approaching a pursuer to an evader, and we get   sufficient conditions guaranteeing completion of pursuit. We construct an attainability domain for the completeness of solution of the pursuit problem. For solving the evasion problem, we offer a specific strategy to an evader and find sufficient conditions guaranteeing evasion. Furthermore, in the evasion game, we present a variation function of distance between the players.
+
+\subsection*{Statement of problems}
+
+Let in space $\mathbb R^n$, the controlled player $P$ (the Pursuer), follows another controlled player $E$ (the Evader). Suppose $x$ and $y$ are the positions of the Pursuer and the Evader respectively. We consider the differential game when motions of the players are represented by the differential equations with initial values
+\begin{equation}\label{eq1}
+\dot{x}=u, \ \ x(0)=x_0,
+\end{equation}
+\begin{equation}\label{eq2}
+\dot{y}=v, \ \ y(0)=y_0,
+\end{equation}
+correspondingly, where $x, y, x_0, y_0, u, v \in \mathbb{R}^n$, $n \ge 2$; $x_0$ and $y_0$ are the initial positions of the players at the moment $t=0$, and assume $x_0\neq y_0$.
+
+In the equation (\ref{eq1}), $u$ is the velocity vector of the Pursuer and its temporal variation must be a measurable function
+ $u(\cdot):[0,+\infty)\rightarrow \mathbb R^n$. On this vector function, we put the constraint of type (in short, $H$-constraint)
+\begin{equation}\label{eq3}
+|u(t)| \le p e^{-k_{1}t}+k_{2} \int\limits_{0}^{t}|u(s)|ds \ \mbox{for almost every} \ t\ge 0,
+\end{equation}
+where $p$, $k_{1}$, $k_{2}$ are the parametric positive numbers. Denote by $U_{H}$ the set of all the measurable functions $u(\cdot)$ that satisfy the constraint (\ref{eq3}).
+
+Similar, in the equation (\ref{eq2}), $v$ is the velocity vector of the Evader and its temporal variation must
+ be a measurable function $v(\cdot):[0,+\infty)\rightarrow \mathbb R^n$. On this vector function, we put the $H$-constraint
+\begin{equation}\label{eq4}
+|v(t)| \le q e^{-k_{1}t}+ k_{2}\int\limits_{0}^{t}|v(s)|ds \ \mbox{for almost every} \
+t\ge 0,
+\end{equation}
+where $q$ is the parametric positive number. Denote by $V_{H}$ the set of all the measurable functions $v(\cdot)$ that satisfy the constraint (\ref{eq4}).
+
+Note that some special cases of the constraints (\ref{eq3}), (\ref{eq4}) describe another
+ type constraints and they were looked into in the works of other several mathematicians.
+  For instance, let's consider the case $k_{1}=0$, $k_{2}=0$. Then we get geometric constraints
+   and the differential games under those constraints on controls were investigated in the works \cite{1}-\cite{11}, \cite{14}, \cite{17}-\cite{19}.
+    If we take as $k_{1}=0$, then we have Gr\"{o}nwall type constraints, which were earlier introduced and studied in the work \cite{24}.
+
+\textbf{Definition 1.}
+A function $u(\cdot) = (u_1(\cdot), u_2(\cdot), ...,
+u_n(\cdot))$ ($v(\cdot) = (v_1(\cdot), v_2(\cdot), ...,
+v_n(\cdot))$) that fulfills the constraint (\ref{eq3})
+(the constraint (\ref{eq4})) is termed a control function of the Pursuer (of the Evader).
+
+On account of the equations (\ref{eq1}), (\ref{eq2}), the pairs $(x_0, u(\cdot))$, $u(\cdot)\in U_{H}$  and $(y_0, v(\cdot))$,
+$v(\cdot)\in V_{H}$ originate the trajectories
+\[
+x(t)=x_0+\int\limits_0^tu(s)ds, \ \ \
+y(t)=y_0+\int\limits_0^tv(s)ds
+\]
+of the Pursuer and Evader correspondingly.
+
+\textbf{Definition 2.}
+A function $\mathbf u: \mathbb{R}_+\times \mathbb{R}^n   \to  \mathbb{R}^n
+$  is termed a strategy of the Pursuer if $\mathbf u (t,v)$ is a Lebesgue measurable function in respect
+ to $t$ for every fixed $v$ and it is a Borel measurable function in respect to $v$ for every fixed $t$.
+
+\textbf{Definition 3.}
+In the pursuit game, it is said that a strategy $\mathbf u=\mathbf u(t, v)$
+guarantees completion of pursuit at time moment $T(\mathbf u)$ if, for any control function $v(\cdot)\in V_{H}$, the equality $x(\tau) = y(\tau)$ is satisfied at some time $\tau \in [0, T(\mathbf u)]$, where $x(t)$, $y(t)$ are the solutions of the initial value problems
+\begin{equation}\label{eq5}
+\dot{x}= \mathbf u(t, v(t)), \  x(0)=x_0,
+\end{equation}
+\begin{equation}\label{eq6}
+\dot{y}=v(t), \ \ \ \ \ \ \ \ y(0)=y_0,
+\end{equation}
+where $t\geq0$ and we term the number $T(\mathbf u)$ a guaranteed completion time of pursuit.
+
+\textbf{Definition 4.}
+A function $\mathbf v: \mathbb{R}_+   \to  \mathbb{R}^n$  is called a strategy of the Evader if $\mathbf v (t)$ is a
+Lebesgue measurable function with regard to $t$.
+
+\textbf{Definition 5.}
+In the evasion game, it is said that a strategy $\mathbf{v}(t)$ guarantees escape in the time interval $[0,+\infty)$ if, for any control
+ function $u(t)\in U_{H}$, the relation $x(t) \neq y(t)$ holds
+ for all $t\geq0$, where $x(t)$, $y(t)$ are the solutions of the initial value problems
+\begin{equation}\label{eq7}
+\dot{x}= u(t), \  x(0)=x_0,
+\end{equation}
+\begin{equation}\label{eq8}
+\dot{y}=\mathbf{v}(t), \  y(0)=y_0.
+\end{equation}
+
+The following statement is used for the constraints (\ref{eq3}), (\ref{eq4}).
+
+\textbf{Lemma 1.}
+(Gr\"{o}nwall's inequality, \cite{25}). If $$|f(t)| \le a e^{-b_{1} t} +b_{2}
+\int\limits_{0}^{t} |f(s)|ds$$ is satisfied, then $$|f(t)| \le
+\frac{a}{b_{1}+b_{2}}(b_{2}e^{b_{2}t}+b_{1}e^{-b_{1}t})$$ for all $t \geq 0$, where $f(t)$ is a measurable
+function, and  $a$, $b_{1}, b_{2}$ are positive numbers.
+
+In accordance with Lemma 1, for $u(\cdot)\in U_{H}$, $v(\cdot)\in
+V_{H}$, we attain
+\begin{equation}\label{eq9}
+|u(t)| \leq \mu(t) \ \ \mbox{for almost every} \ \ t\geq0,
+\end{equation}
+\begin{equation}\label{eq10}
+|v(t)| \leq \delta(t) \ \ \mbox{for almost every} \ \ t\ge 0,
+\end{equation}
+where
+\begin{equation}\label{eq11}
+\mu(t)=\frac{p}{k_{1}+k_{2}}(k_{2}e^{k_{2}t}+k_{1}e^{-k_{1}t}),
+\end{equation}
+\begin{equation}\label{eq12}
+\delta(t)=\frac{q}{k_{1}+k_{2}}(k_{2}e^{k_{2}t}+k_{1}e^{-k_{1}t}).
+\end{equation}
+
+In terms of the works \cite{24,25}, from (\ref{eq9}), (\ref{eq10}), the constraints (\ref{eq3}),
+(\ref{eq4}) don't proceed. To define the notions of optimal strategies of
+the players and optimal completion time of pursuit, we consider two games.
+
+The goal of the Pursuer $P$ is to capture the Evader $E$, i.e.
+achievement of the equality $x(t)=y(t)$ (the pursuit problem) and the
+Evader $E$ strives to avoid an encounter (the evasion problem), i.e., to achieve the
+inequality $x(t)\neq y(t)$ for all $t\geq 0,$ and in the opposite
+case, to postpone the instant of encounter as long as
+possible.
+
+This paper is devoted to studying the following problems for the constraints (\ref{eq3}),
+(\ref{eq4}).\\
+\textbf{Problem 1.} Solve the pursuit problem in the differential game (\ref{eq1})-(\ref{eq4}).\\
+\textbf{Problem 2.} Solve the evasion problem in the differential game (\ref{eq1})-(\ref{eq4}).\\
+\textbf{Problem 3.} Construct an attainability domain of the Pursuer.\\
+
+\subsection*{Solution of the pursuit problem}
+
+
+In this part, we define the parallel approach strategy for the Pursuer and
+show sufficient conditions of completion of pursuit. First, we assume that
+the Pursuer knows a control function $v(t)$ at the current time $t$.
+
+Let's introduce the expressions $z(t)=x(t)-y(t)$, $z_{0}=x_{0}-y_{0}$.
+
+\textbf{Definition 6.} If  $p \ge q$ is valid, then the function
+\begin{equation}\label{eq13}
+\textbf{u}_{H}(t,v)=v-\lambda_{H}(t,v)\xi_0
+\end{equation}
+is called the parallel approach strategy or $\Pi_{H}$-strategy of the Pursuer, where \\
+$$\lambda_{H}(t,v)=\langle v,\xi_0\rangle+\sqrt{\langle
+v,\xi_0\rangle^2+\mu^{2}(t)-|v|^{2}}, \ \ \xi_{0}=z_{0}/|z_0|.$$
+
+\textbf{Proposition 1.} For all $(t,v)\in \mathbb{R}_{+}\times\mathbb{R}^n$, the strategy (\ref{eq13}) fulfills the equality
+\begin{equation}\label{eq14}
+|\textbf{u}_{H}(t, v)|=\mu(t)
+\end{equation}
+during pursuit.
+
+\textbf{Proposition 2.} Let $p \ge q$ be true. Then for all $(t,v)\in \mathbb{R}_{+}\times\mathbb{R}^n$, the scalar function $\lambda_{H}(t,v)$ is continuous, non-negative and bounded as
+\begin{equation}\label{eq15}
+\mu(t)-|v| \leq \lambda_{H}(t,v)\leq \mu(t)+|v|.
+\end{equation}
+
+\textbf{Lemma 2.} Let $p > q$ be satisfied. Then for the equation
+\begin{equation}\label{eq16}
+\Psi_{H}(t)=0,
+\end{equation}
+there exists only one positive root with respect to $t$ and we express it by $T_{H}$, where $$\Psi_{H}(t)=|z_{0}| -\frac{p-q}{k_{1}+k_{2}} (e^{k_{2}t}-e^{-k_{1}t}).$$
+
+{\sf Proof. }
+Let us consider some properties of $\Psi_{H}(t)$ in the following:
+
+1) $\Psi_{H}(0)=|z_{0}|>0$;
+
+2) $\Psi_{H}(t)$ monotonically decreases with respect to $t$, $t\geq0$;
+
+3) Calculate the limit of $\Psi_{H}(t)$ as $t\rightarrow +\infty$, i.e.,
+
+
+$$\lim_{t\rightarrow \infty}\Psi_{H}(t)=\lim_{t\rightarrow \infty} \left(|z_{0}| -\frac{p-q}{k_{1}+k_{2}} (e^{k_{2}t}-e^{-k_{1}t})\right)=-\infty.$$
+This completes the proof.
+\hfill$\Box$ \
+
+Below the following statement will be proved.
+
+\textbf{Theorem 1.} \emph{ If $p > q$ holds in the pursuit game (\ref{eq1})-(\ref{eq4}), then the strategy (\ref{eq13}) guarantees completion of pursuit in the time interval $[0, T_{H}]$.}
+
+\medskip
+
+{\sf Proof. } Let $v(\cdot)\in V_{H}$ be an optional control function of
+the Evader. Then the Pursuer implements the strategy $\textbf{u}_{H}(t, v(t))$. On account of the equations
+(\ref{eq5}), (\ref{eq6}), we come to the unique initial value
+problem
+$$
+\dot{z}=\textbf{u}_{H}(t,v(t))-v(t), \
+\ z(0)=z_{0}
+$$
+or from (\ref{eq13}), the last equation will be
+$$
+\dot{z}=-\lambda_{H}(t,v(t))\xi_0, \
+\ z(0)=z_{0}.
+$$
+After integrating in the interval $[0, t]$, we generate the solution
+\begin{equation}\label{eq17}
+z(t) = \Lambda_{H}(t,v(\cdot))z_{0},
+\end{equation}
+where
+$$
+\Lambda_{H}(t,v(\cdot))=1-  \frac{1}{|z_{0}|}
+\int\limits_{0}^{t}\lambda_{H}(s,v(s))ds.
+$$
+
+It is obvious that $d\Lambda_{H}(t,v(\cdot))/dt\leq0$. Therefore, by means of (\ref{eq11}), (\ref{eq12}), (\ref{eq15}), the following estimations might be written in turn:
+$$ \Lambda_{H}(t,v(\cdot)) \leq 1-\frac{1}{|z_{0}|}\int_{0}^{t}[\mu(s)- |v(s)|]ds\leq 1-\frac{p-q}{(k_{1}+k_{2})|z_{0}|}\int_{0}^{t} (k_{2}e^{k_{2}s}+k_{1}e^{-k_{1}s}) \ ds=\Psi_{H}(t),$$
+where $\Psi_{H}(t)$ is the identical function in Lemma 2.
+It is known that $\Psi_{H}(T_{H})=0$ holds on the basis of Lemma 2. On the other hand, we have $ \Lambda_{H}(t,v(\cdot)) \leq\Psi_{H}(t)$, and as a consequence, there exists some time $\theta\in[0, T_{H}]$ at which $\Lambda_{H}(\theta, v(\cdot))=0$ is fulfilled. Thus, from (\ref{eq17}) it follows that $z(\theta)=0$, and this implies $x(\theta)=y(\theta)$.
+
+Below we present that the strategy (\ref{eq13}) satisfies the constraint (\ref{eq4}) in the time interval $[0, T_{H}]$. Let the Evader choose some arbitrary control $v(\cdot)\in V_{H}$. Then from (\ref{eq14}) we may write the following:
+
+$$|\textbf{u}_{H}(t,v(t)|=\frac{p}{k_{1}+k_{2}}(k_{2}e^{k_{2}t}+k_{1}e^{-k_{1}t})=p e^{-k_{1}t}+\frac{p k_{2}}{k_{1}+k_{2}}(e^{k_{2}t}-e^{-k_{1}t})=$$
+$$=p e^{-k_{1}t}+k_{2} \int_{0}^{t}\frac{p}{k_{1}+k_{2}}(k_{2}e^{k_{2}s}+k_{1}e^{-k_{1}s})ds = p e^{-k_{1}t}+k_{2}\int_{0}^{t}|\textbf{u}_{H}(s,v(s))|ds.
+$$
+This finishes the proof of Theorem 1.
+\hfill$\Box$ \
+
+\subsection*{Solution of the evasion problem}
+
+In this part, the evasion problem is considered as a control
+problem from the standpoint of the Evader. A special admissible strategy is proposed for the Evader, and it is proved that the proposed strategy guarantees escape under sufficient conditions of evasion in the time interval $[0, +\infty)$.
+
+\textbf{Definition 7.} In the evasion game (\ref{eq1})--(\ref{eq4}), we say the function
+\begin{equation} \label{eq18}
+\textbf{v}_{H}(t)= -\delta(t) \xi _{0}, \ t\geq0
+\end{equation}
+a strategy of the Evader, where $\xi _{0}=z_{0}/|z_{0}|$ and $\delta(t)$ is given in (\ref{eq12}).
+
+Below the following statement will be proved.
+
+\textbf{Theorem 2.} \emph{Let $p \leq q$ be fulfilled. Then the strategy (\ref{eq18}) guarantees escape in the interval $[0, +\infty)$.}
+
+\medskip
+
+{\sf Proof. } Suppose the Pursuer moves by some control function $u(\cdot)\in U_{H}$. As for the Evader applies the control function $\textbf{v}_{H}(t)$ in (\ref{eq18}). Owing to the equations
+(\ref{eq7}), (\ref{eq8}), we reach the unique initial value
+problem
+$$
+\dot{z}=u(t)-\textbf{v}_{H}(t), \
+\ z(0)=z_{0}.
+$$
+Integrate in the interval $[0, t]$ and obtain the solution
+$$
+z(t)=z_0-\int_0^t \textbf{v}_{H}(s)ds+\int_{0}^{t}u(s)ds.
+$$
+For the absolute value of $z(t)$, the following estimations are valid:
+$$
+|z(t)|\geq \left|z_0 -\int_0^t \textbf{v}_{H}(s)ds\right| - \left|\int_{0}^{t}u(s)ds\right|\geq\left|z_0+\frac{z_{0}}{|z_{0}|}\int_0^t \delta(s)ds\right| - \int_{0}^{t}|u(s)|ds=|z_0| + \int_{0}^{t}\delta(s) \ ds -
+\int\limits_{0}^{t}|u(s)|ds.
+$$
+According to (\ref{eq9}), (\ref{eq11}), (\ref{eq12}), we get
+\begin{equation} \label{eq19}
+|z(t)|\geq \Phi(t),
+\end{equation}
+where $\Phi(t)=|z_{0}|+\frac{q-p}{k_{1}+k_{2}}(e^{k_{2}t}-e^{-k_{1}t}).$
+It can be seen that the function $\Phi(t)$ has the following properties:
+
+1) $\Phi(0)=|z_{0}|>0$;
+
+2) if $p\leq q$, then $\Phi(t)$ is monotone increasing, that is,  $$\frac{d\Phi(t)}{dt}=\frac{q-p}{k_{1}+k_{2}}(k_{2}e^{k_{2}t}+k_{1}e^{-k_{1}t})\geq0.$$
+From these properties, it proceeds that $\Phi(t)\geq|z_{0}|$ holds for all $t\geq0$ and therefore, from (\ref{eq19}) it follows that $z(t)\neq0$ or $x(t)\neq y(t)$.
+This completes the proof of Theorem 2. \hfill$\Box$ \\
+
+\subsection*{Dynamics of the attainability domain}
+If $p > q$ is satisfied in the pursuit game (\ref{eq1})--(\ref{eq4}), then the Pursuer catches the Evader at some points depending on control function $v(\cdot)\in V_{H}$. The set of such capture points can consist of some finite set. Assume that the Evader
+chooses any control function $v(\cdot))\in V_{H}$ and the Pursuer applies the strategy (\ref{eq13}). Then for each $t\in[0, \tau]$, define the following trajectories
+$$ x(t)=x_0+\int\limits_0^t\textbf{u}_{H}(s,v(s))ds, \ \ \ y(t)=y_0+\int\limits_0^tv(s)ds $$
+for the Evader and Pursuer respectively, where $\tau$ is the capture time. Now we construct the sets
+
+\begin{equation} \label{eq20}
+P_{H}(t)=P_{H}(x(t),y(t))=\{w:q|w-x(t)|\geq p|w-y(t)|\},
+\end{equation}
+$$P_{H}(0)=P_{H}(x_{0},y_{0})=\{w:q|w-x_{0}|\geq p|w-y_{0}|\},$$
+for the pair of $(x(t),y(t))$. It is easy to verify that $y(t)\in P_{H}(t)$ for all $t\in[0,\tau]$.
+
+\textbf{Theorem 3.} \emph{If $p > q$ is valid, then the set (\ref{eq20}) is equivalent to
+\begin{equation} \label{eq21}
+P_{H}(t)=x(t)+\Lambda_{H}(t,v(\cdot))[R(z_{0})S+C(z_{0})],
+\end{equation}
+where $S$ is a unit sphere whose center is on zero point in the space $\mathbb R^{n}$ and $$R(z_{0})=\frac{pq}{p^{2}-q^{2}}
+|z_0|, \ \ \ C(z_{0})=-\frac{p^{2}}{p^{2}-q^{2}} z_0.$$}
+\medskip
+
+{\sf Proof. } From (\ref{eq20}), we can write
+$$P_{H}(t)=x(t)+\{w:q|w|\geq p|w+z(t)|\}=x(t)+\left\{w:\left|w+\frac{p^{2}}{p^{2}-q^{2}}z(t)\right|\geq
+\frac{pq}{p^{2}-q^{2}}|z(t)|\right\}.$$
+If we denote as
+$$R(z(t))=\frac{pq}{p^{2}-q^{2}}
+|z(t)|, \ \ \ C(z(t))=-\frac{p^{2}}{p^{2}-q^{2}} z(t),$$
+then express the last equality as
+\begin{equation} \label{eq22}
+P_{H}(t)=x(t)+R(z(t))S+C(z(t)).
+\end{equation}
+According to (\ref{eq17}), we attain
+$$R(z(t))=R(z_{0})\Lambda(t, v(\cdot)), \ \ \ C(z(t))=C(z_{0})\Lambda(t, v(\cdot))$$
+and thus, the formula (\ref{eq22}) will be
+$$P_{H}(t)=x(t)+\Lambda_{H}(t,v(\cdot))[R(z_{0})S+C(z_{0})].$$
+This completes the proof of Theorem 3. \hfill$\Box$ \\
+
+\textbf{Theorem 4.} \emph{Let $p>q$ be true. Then the multi-valued mapping $P_{H}(t)$ is decreasing with regard to embedding in respect to $t$ on the interval $[0,\tau]$, i.e., $P_{H}(t_1)\supset P_{H}(t_2)$ is valid if $0\leq t_{1}\leq t_{2}$ for $t_{1}, t_{2}\in[0,\tau]$.}
+\medskip
+
+{\sf Proof. } Initially, define the support function $F(P_{H}(t), \psi)$ for some $\psi\in \mathbb{R}^{n}$, $|\psi|=1$ (\cite{26}) and calculate its derivative with respect to $t$ as follows:
+
+$$\frac{d}{dt}F(P_{H}(t),\psi)=\frac{d}{dt}F(x(t)+\Lambda_{H}(t,v(\cdot))[R(z_0)S+C(z_0)],\psi)=$$
+
+$$=\langle\dot{x}(t),\psi\rangle-\frac{\lambda_{H}(t,v(t))}{|z_{0}|}[R(z_0)+\langle C(z_0),\psi\rangle].$$
+
+Let us present that the inequality
+\begin{equation} \label{eq23}
+\langle\dot{x}(t),\psi\rangle-\frac{\lambda_{H}(t,v(t))}{|z_{0}|}[R(z_0)+\langle C(z_0),\psi\rangle]\leq0
+\end{equation}
+is satisfied for all $t\in[0, \tau]$. For this purpose, we perform some transformations on the constraint (\ref{eq4}) in the following:
+$$\frac{|v(t)|^{2}p^{2}}{p^{2}-q^{2}}\leq\frac{\delta^{2}(t)p^{2}}{p^{2}-q^{2}},$$
+$$|v(t)|^{2}\left(1+\frac{q^{2}}{p^{2}-q^{2}}\right)\leq\frac{q^{2}}{p^{2}-q^{2}}\mu^{2}(t),$$
+\begin{equation} \label{eq24}
+|v(t)|^{2}\leq\frac{q^{2}}{p^{2}-q^{2}}(\mu^{2}(t-|v(t)|^{2}).
+\end{equation}
+
+By the function $\lambda_{H} (t, v(t))$ in (\ref{eq13}), we find the equality $$\mu^{2}(t)-|v(t)|^{2}=\lambda_{H}(t,v(t))(\lambda_{H}(t,v(t))-2\langle
+v(t),\xi_{0}\rangle).$$ Substitute it into (\ref{eq24}) and after some simplifications, we obtain
+\begin{equation} \label{eq25}
+|v(t)|^{2}+2\frac{q^{2}}{p^{2}-q^{2}}\langle v(t),\xi_{0}\rangle \lambda_{H}(t,v(t))\leq \lambda_{H}^{2}(t,v(t)) \frac{q^{2}}{p^{2}-q^{2}}.
+\end{equation}
+Add the expression $\left(\lambda_{H}(t,v(t)) q^{2}/(p^{2}-q^{2})\right)^{2}$ to both sides of (\ref{eq25}) and bring to the canonical form
+$$|v(t)|^{2}+2\frac{q^{2} }{p^{2}-q^{2}}\lambda_{H}(t,v(t))\langle v(t),\xi _{0} \rangle +
+\lambda_{H}^{2} (t,v(t))\frac{q ^{4} }{(p ^{2} - q ^{2} )^{2} } \leq$$
+$$\leq \lambda_{H}^{2} (t,v(t))\frac{q^{4} }{(p^{2} -q^{2})^{2} } +\lambda_{H}^{2} (t,v(t))\frac{q^{2} }{p^{2}-q^{2} },$$
+
+\begin{equation} \label{eq26}
+\left|v(t)+\frac{q^{2} }{p^{2} - q^{2} }\lambda_{H}(t,v(t)) \xi _{0} \right|\leq \lambda_{H}(t,v(t))\frac{pq }{p^{2} -q^{2}}.
+\end{equation}
+
+For any vector $\psi \in R^{n} , \ |\psi|=1$, the inequality
+$$ \left|v(t)+\frac{q^{2} }{p^{2} - q^{2} }\lambda_{H} (t,v(t)) \xi _{0} \right|\geq \left\langle v(t)+
+\frac{q^{2} }{p^{2} -q^{2} }\lambda_{H} (t,v(t)) \xi _{0} ,\, \psi \right\rangle $$ is valid.
+
+According to this inequality and (\ref{eq26}), come to the estimation
+$$\left\langle v(t)+\frac {q^{2} }{p^{2} - q^{2} }\lambda_{H}(t,v(t)) \xi _{0} ,\psi \right\rangle \leq \lambda_{H} (t,v(t))\frac{pq }{p ^{2} - q^{2} }$$
+and simplify it as follows:
+$$\langle v(t),\psi \rangle - \lambda_{H}(t,v(t))\left(1-\frac {p^{2} }{p^{2} - q^{2} } \right)
+\langle \xi _{0} , \psi \rangle \leq \lambda_{H}(t,v(t))\frac{pq}{p^{2} - q^{2}},$$
+$$\langle v(t)-\lambda_{H}(t,v(t))\xi _{0} ,\psi \rangle + \lambda_{H}(t,v(t))\frac{p^{2}}
+{p^{2} -q^{2} } \langle \xi _{0} ,\psi \rangle \leq \lambda_{H}(t,v(t))\frac{pq}{p^{2} -q^{2}},$$
+$$\langle \dot{x}(t),\psi \rangle -\frac{\lambda_{H}(t,v(t))}{|z_{0}|}\left(\frac{pq}{p^{2} -q^{2} } |z_{0} |-\frac{p^{2}}{p^{2} -q^{2}} \langle z_{0} , \psi \rangle \right)\leq 0,$$
+$$\langle\dot{x}(t),\psi\rangle-\frac{\lambda_{H}(t,v(t))}{|z_{0}|}[R(z_0)+\langle C(z_0),\psi\rangle]\leq0.$$
+
+So, the relation (\ref{eq23}) is true and it means that $\frac{d}{dt}F(P_{H}(t), \psi)\leq0$ holds for any $\psi\in\mathbb{R}^{n}$, $|\psi|=1$.
+This finishes the proof of Theorem 4. \hfill$\Box$ \\
+\begin{tabular}{|p{0.17cm}|p{0.3cm}|p{0.3cm}|p{2cm}|p{5.3cm}|p{2.8cm}|p{3.2cm}|}
+   \hline
+  % after \\: \hline or \cline{col1-col2} \cline{col3-col4} ...
+   \multicolumn{7}{|c|}{Pursuit game}  \\ \hline
+  \No & $k_{1}$ & $k_{2}$ &  Capture conditions & Resolving function $\lambda_{H}(t,v(t))$&  Guaranteed completion time of pursuit & $\Psi_{H}(t)$ in Lemma 2\\ \hline
+  1 & 0  & >0 &$p>q$ & $\langle v,\xi_0\rangle+\sqrt{\langle v,\xi_0\rangle^2+\delta e^{2k_{2}t}}$ & $\frac{1}{k_{2}}\ln\left(1+\frac{k_{2}|z_{0}|}{p-q}\right)$ & $1-\frac{(p-q) (e^{k_{2}t}-1)}{k_{2}|z_{0}|}$\\ \hline
+  2 & >0 & 0 &$p>q+k_{1}|z_{0}|$ & $\langle v,\xi_0\rangle+\sqrt{\langle v,\xi_0\rangle^2+p^{2} e^{-2k_{1}t}-|v|^{2}}$ & $\frac{1}{k_{1}}\ln\left(\frac{p-q}{p-q-k_{1}|z_{0}|}\right)$ & $1-\frac{(p-q) (1-e^{-k_{1}t})}{k_{1}|z_{0}|}$ \\ \hline
+  3 & \multicolumn{2}{|c|}{=} &$p>q$ & $\langle v,\xi_0\rangle+\sqrt{\langle
+v,\xi_0\rangle^2+p^2 ch^2 kt-|v|^{2}}$ & $\frac{1}{k}\ln\left( \eta +\sqrt{\eta^{2}+1}\right)$  & $1-\frac{(p-q)}{|z_{0}| k} sh kt $ \\ \hline
+  4 & 0  & 0 &$p>q$ & $\langle v,\xi_0\rangle+\sqrt{\langle
+v,\xi_0\rangle^2+p^2-|v|^{2}}$ & $\frac{|z_{0}|}{p-q}$  &  $ 1-\frac{p-q}{|z_{0}|} t$ \\ \hline
+  5 & >0 & >0 &$p>q$ & $\langle v,\xi_0\rangle+\sqrt{\langle
+v,\xi_0\rangle^2+\mu^{2}(t)-|v|^{2}}$ & first positive root of the equation $\Psi_{H}(t)=0$ & $1-\frac{(p-q) (e^{k_{2}t}-e^{-k_{1}t})}{(k_{1}+k_{2})|z_{0}|}$ \\ \hline
+  \end{tabular}
+
+where $\delta=p^2-q^2, \eta= \frac{|z_{0}|k}{p-q}$.
+$$Table-1$$
+\begin{tabular}{|p{0.17cm}|p{0.3cm}|p{0.3cm}|p{2.2cm}|p{5.8cm}|p{5.7cm}|}
+   \hline
+  % after \\: \hline or \cline{col1-col2} \cline{col3-col4} ...
+   \multicolumn{6}{|c|}{Evasion game}  \\ \hline
+  \No & $k_{1}$ & $k_{2}$ &  Evasion conditions & Strategy of the Evader &  The distance function $\Phi(t)$ \\ \hline
+  1 & 0  & >0 &$p\leq q$ & $\textbf{v}_{H}(t)=-q e^{k_{1}t}\xi_0$ & $|z_{0}|+\frac{q-p}{k_{2}}(e^{k_{2}t}-1)$ \\ \hline
+  2 & >0 & 0 &$p\leq q+k_{1}|z_{0}|$ & $ \textbf{v}_{H}(t)=- q e^{-k_{2}t}\xi_0$ & $|z_{0}|+\frac{q-p}{k_{1}}(1-e^{-k_{1}t})$\\ \hline
+  3 & \multicolumn{2}{|c|}{=} &$p\leq q$ & $\textbf{v}_{H}(t)= -q chkt \xi _{0}$ & $|z_{0}|+\frac{q-p}{k}sh{kt}$ \\ \hline
+  4 & 0  & 0 &$p\leq q$ & $\textbf{v}_{H}(t)= -q \xi _{0}$ & $|z_{0}|+(q-p)t$ \\ \hline
+  5 & >0 & >0 &$p\leq q$ & $\textbf{v}_{H}(t)= -\nu(t) \xi _{0}$ & $|z_{0}|+\frac{q-p}{k_{1}+k_{2}}(e^{k_{2}t}-e^{-k_{1}t})$ \\ \hline
+  \end{tabular}
+  $$Table-2$$
+
+\bigskip
+
+\textbf{\Large References}
+
+\begin{enumerate}
+\bibitem{1} \textsf{Pontryagin L.~S.~} Selected Works. MAKS Press, Moscow, 2004. 551 p.
+
+\bibitem{2} \textsf{Krasovskii N.~N.~, Subbotin A.~I.~} Game-Theoretical Control Problems. New York, Springer, 2011. 517 p.
+
+\bibitem{3} \textsf{Isaacs R.~} Differential games. John Wiley and Sons, New York. 1965. 385 p.
+
+\bibitem{4} \textsf{Petrosyan L.~A.~} Differential games of pursuit. Series on
+optimization. World Scientific Publishing, Singapore, 1993. 2. 326 p.
+
+\bibitem{5} \textsf{Pshenichnyi B.~N.~}  Simple pursuit by several objects. \textit{Cybernetics and System Analysis.} 12(5), 1976.  pp. 484--485.
+
+\bibitem{6} \textsf{Azamov A.~} On the quality problem for simple pursuit games with
+constraint. \textit{Publ.Sofia: Serdica Bulgariacae math.} 1(12), 1986, pp. 38--43.
+
+\bibitem{7} \textsf{Azamov A.~A.~, \ Samatov B.~T.~} The $\Pi$-Strategy: Analogies and
+Applications. \textit{The Fourth International Conference Game Theory and Management, St. Petersburg}. 4, 2011.  pp. 33--47.
+
+\bibitem{8} \textsf{Blagodatskikh A.~I.~, Petrov N.~N.~} Conflict interaction of
+groups of controlled objects. Izhevsk: Udmurt State University. 2009. 266 p.
+
+\bibitem{9} \textsf{Chikrii A.~A.~} Conflict-Controlled Processes. Kluwer, Dordrecht. 1997. 403 p.
+
+\bibitem{10} \textsf{Grigorenko N.~L.~} Mathematical Methods of Control for Several Dynamic Processes. \textit{Izdat. Gos. Univ.}, Moscow.  1990. 198 p.
+
+\bibitem{11} \textsf{Petrosyan L.~A.,~ Rikhsiev B.~B.~} Pursuit on the plane. Nauka, Moscow, 26, 1991,  96 p.
+
+\bibitem{12} \textsf{Petrosyan L.~A.,~ Mazalov V.~V.~}  Game Theory and Applications I, II, \textit{Nova Sci. Publ., New York}. 1996. pp. 211--219.
+
+\bibitem{13} \textsf{Samatov B.~T.~} On a pursuit-evasion problem under a linear change
+of the pursuer resource. \textit{Siberian Advances in Mathematics}.  10(23), 2013. pp. 294--302.
+
+\bibitem{14} \textsf{Samatov B.~T.~} The pursuit-evasion problem under integral-geometric constraints on pursuer controls.
+\textit{Automation and Remote Control}, 7(74). 2013. pp. 1072--1081.
+
+\bibitem{15} \textsf{Samatov B.~T.~} Problems of group pursuit with integral constraints on controls of the players I,II. \textit{Cybernetics and Systems Analysis}. 2013. 5(49), pp. 756--767, 6(49), pp. 907--921.
+
+\bibitem{16} \textsf{Samatov B.~T.~} The $\Pi$-strategy in a differential game with linear control constraints. \textit{J.Appl.Maths and Mechs}. 2014. 3(78), pp. 258--263.
+
+\bibitem{17} \textsf{Dar'in A.~N.,~ Kurzhanskii A.~B.~} Control Under Indeterminacy and Double
+ Constraints. \textit{Differential Equations}. 2003. 11(39), pp. 1554--1567.
+
+\bibitem{18} \textsf{Kornev D.~V.,~ Lukoyanov N.~Yu.~} On a minimax control problem for a positional functional under
+ geometric and integral constraints on control actions. \textit{Proceedings of the Steklov
+Institute of Mathematics}. 2016. 293, pp. 85--100.
+
+\bibitem{19} \textsf{Satimov N.~Yu.~} Methods of solving of pursuit problem in differential games. NUUz, Tashkent. 2003.
+
+\bibitem{20} \textsf{Ibragimov G.~I.~} A game of optimal pursuit of one object by several. \textit{J.Appl.Maths and Mechs}. 62(2), 1998. P. pp. 187--192.
+
+\bibitem{21} \textsf{Ibragimov G.~I.~} Optimal Pursuit with Countably Many Pursuers and One Evader. \textit{Differential Equations}. 41(5), 2005, pp. 627--635.
+
+\bibitem{22} \textsf{Aubin J.~P.,~ Cellina A.~} Differential Inclusions. Set-Valued
+Maps and Viability Theory. Berlin-Heidelberg-New York-Tokyo,
+Springer-Verlag. XIII, 1984. 342 p.
+
+\bibitem{23} \textsf{Pang J.~S.,~ Stewart D.~E.~} Differential Variational
+Inequalities. \textit{Mathematical Programming}.  113(2), 2008. Series A, pp. 345--424.
+
+\bibitem{24} \textsf{Samatov B.~T.,~ Ibragimov G.~I.,~ and Hodjibayeva I.~V.~} Pursuit-evasion differential games with the Gronwall
+type constraints on controls. \textit{Ural Mathematical Journal}.  6(2), 2020. pp. 95--107.
+
+\bibitem{25} \textsf{Gr\"{o}nwall T.~H.~} Note on the derivatives with respect to a
+parameter of the solutions of a system of differential equations. \textit{Annals of Mathematics Second Series}.  20(4), 1919. pp. 292--296.
+\bibitem{26} \textsf{Blagodatskikh V.~I.~} Introduction to Optimal Control. Moscow: Vysshaya Shkola, 2001. 239 p.
+\end{enumerate}
+
+
+\bigskip
+
+\textbf{Received: 23/04/2022}\\
+
+\textbf{Accepted: 28/12/2022}\\
+
+
+\bigskip
+\textcolor{red}{\Large Cite this article}
+
+Akbarov A. Kh.    ~ {Differential games with   h-constraints on the controls }.  \textit{Bull.~Inst.~Math.},~ 2022, Vol.5, \No 6, pp. \pageref{firstpage}-\pageref{lastpage}
+
+
+\label{lastpage}
+
+
+\end{document}

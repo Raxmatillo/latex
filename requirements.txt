@@ -1,0 +1,9 @@
+Package      Version
+------------ -------
+latex2mathml 3.75.1
+Markdown     3.4.1
+mdtex2html   1.2.0
+pip          22.3.1
+setuptools   65.5.1
+TexSoup      0.3.1
+wheel        0.38.4
